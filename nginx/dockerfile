@@ -1,0 +1,9 @@
+FROM alpine
+
+RUN apk add update
+RUN apk add openssh
+RUN apk add openssl
+RUN apk add nginx
+
+RUN mkdir /run/nginx
+
