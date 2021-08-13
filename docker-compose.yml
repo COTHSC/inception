@@ -3,4 +3,9 @@ services:
         nginx:
           build: ./nginx/
           container_name: nginx
-
+          volumes:
+            #            - ./nginx/srcs/http.d:/etc/nginx/http.d
+            - ./nginx/srcs/html:/var/www/mysite
+          ports:
+            - 80:80
+            - 443:443
