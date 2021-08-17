@@ -4,8 +4,13 @@ services:
           build: ./nginx/
           container_name: nginx
           volumes:
-            #            - ./nginx/srcs/http.d:/etc/nginx/http.d
-            - ./nginx/srcs/html:/var/www/mysite
+            - ./nginx/srcs/http.d/myserver.conf:/etc/nginx/nginx.conf
+            - ./nginx/srcs/html:/srv/mysite
           ports:
-            - 80:80
             - 443:443
+            - 80:80
+        php:
+          build: ./php/
+          container_name: php
+          ports:
+            - 3000:3000
