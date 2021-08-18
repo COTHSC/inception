@@ -7,10 +7,13 @@ services:
             - ./nginx/srcs/http.d/myserver.conf:/etc/nginx/nginx.conf
             - ./nginx/srcs/html:/srv/mysite
           ports:
-            - 443:443
-            - 80:80
+            - "443:443"
+            - "80:80"
         php:
           build: ./php/
           container_name: php
+          volumes:
+            - ./php/srcs/index.php:/srv/index.php
+            - ./php/srcs/www.conf:/etc/php7/php-fpm.d/www.conf
           ports:
-            - 3000:3000
+            - "8000:8000"

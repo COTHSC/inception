@@ -1,2 +1,2 @@
-php -S localhost:8000 /srv/index.php
-sleep infinite;
+cd /srv
+php -S php:8000
