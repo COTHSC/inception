@@ -13,7 +13,12 @@ services:
           build: ./php/
           container_name: php
           volumes:
-            - ./php/srcs/index.php:/srv/index.php
+            - ./php/srcs/wp-config.php:/srv/wordpress/wp-config.php
             - ./php/srcs/www.conf:/etc/php7/php-fpm.d/www.conf
           ports:
             - "8000:8000"
+        db:
+          build: ./db/
+          container_name: db
+          ports:
+            - "3306"
