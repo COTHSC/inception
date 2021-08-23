@@ -1,2 +1,2 @@
 cd /srv/wordpress
-php -S php:8000
+php -S php:9000
