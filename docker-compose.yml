@@ -1,24 +1,31 @@
 version : "3"
 services:
-        php:
+        php: 
+          depends_on:
+            - "db"
+          # env_file:
+          #   - .env
           build: ./php/
           container_name: php
           volumes:
-            - ./php/srcs/wp-config.php:/srv/wordpress/wp-config.php
             - ./php/srcs/www.conf:/etc/php7/php-fpm.d/www.conf
+            - ./volumes/wordpress_files/:/srv/
           ports:
             - "9000:9000"
         nginx:
           build: ./nginx/
+          depends_on:
+            - "php"
           container_name: nginx
           volumes:
             - ./nginx/srcs/http.d/myserver.conf:/etc/nginx/nginx.conf
-            - ./nginx/srcs/html:/srv/mysite
+            - ./volumes/wordpress_files/:/srv/
           ports:
             - "443:443"
-            - "80:80"
         db:
           build: ./db/
           container_name: db
+          volumes:
+            - ./volumes/database/:/var/lib/mysql/
           ports:
             - "3306"

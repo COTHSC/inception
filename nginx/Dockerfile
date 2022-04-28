@@ -5,8 +5,6 @@ RUN apk add openssh
 RUN apk add openssl
 RUN apk add nginx
 
-#RUN mkdir /run/nginx
-
 RUN adduser -D user
 RUN echo "user:password:"|chpasswd
 RUN ssh-keygen -A
