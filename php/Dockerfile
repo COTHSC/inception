@@ -9,4 +9,4 @@ RUN cd /
 
 COPY ./srcs/start.sh /
 CMD sh ./start.sh
-EXPOSE 8000
+EXPOSE 9000
